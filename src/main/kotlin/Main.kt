@@ -42,7 +42,7 @@ data class Node(
 )
 
 /**
- * Funció recursiva per recórrer l'arbre i imprimir els valors dels nodes
+ * Funció recursiva per recórrer l'arbre i imprimir els valors dels nodes recorrent en profunditat primer (DFS, Depth-First Search)
  * @author dmarin-itb
  * @param node Element de tipus Node que actúa com a arrel (primer nivell) de l'arbre a recòrrer
  */
@@ -57,7 +57,7 @@ fun recorrerArbre(node: Node) {
 }
 
 /**
- * Funció recursiva per aplanar l'arbre i retornar una llista amb els valors dels nodes
+ * Funció recursiva per aplanar l'arbre i retornar una llista amb els valors dels nodes recorrent en profunditat primer (DFS, Depth-First Search)
  * @author dmarin-itb
  * @param node Element de tipus Node que actua com a arrel de l'arbre
  * @return Llista amb els valors de tots els nodes de l'arbre
