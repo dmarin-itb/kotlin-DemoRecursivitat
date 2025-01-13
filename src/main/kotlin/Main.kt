@@ -34,14 +34,6 @@ fun main() {
 }
 
 /**
- * Definició de la classe Node per representar cada node de l'arbre
- */
-data class Node(
-    val valor: Int,
-    val fills: List<Node> = listOf()
-)
-
-/**
  * Funció recursiva per recórrer l'arbre i imprimir els valors dels nodes recorrent en profunditat primer (DFS, Depth-First Search)
  * @author dmarin-itb
  * @param node Element de tipus Node que actúa com a arrel (primer nivell) de l'arbre a recòrrer
