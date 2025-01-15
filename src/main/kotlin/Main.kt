@@ -17,6 +17,8 @@ fun main() {
             Node(11)
         )
     )
+/*
+    // Com partim del repositori amb les funcions recorrerArbre i aplanarArbre, mantenim les crides, però comentades
     println("Arbre 1:")
     recorrerArbre(arbre1)
 
@@ -30,6 +32,18 @@ fun main() {
     val arbreAplanat2 = aplanarArbre(arbre2)
     println("\nArbre 2 aplanat:")
     println(arbreAplanat2)
+*/
+    println("CERCA:")
+    val res = cercaEnArbreNari(arbre1, 3)
+    println("$res està el número 3 a l'arbre")
+
+    println("COMPTAR:")
+    val res2 = qCopsEnArbreNari(arbre1, 3)
+    println("El número 3 està $res2 cops a l'arbre")
+
+    println("SUMAR:")
+    val res3 = sumarArbreNari(arbre1)
+    println("La suma de tots els elements de l'arbre és $res3")
 
 }
 
@@ -64,4 +78,58 @@ fun aplanarArbre(node: Node): List<Int> {
     }
 
     return llistaArbre
+}
+
+/**
+ * Funció recursiva per cercar l'element num a l'arbre recorrent en profunditat primer (DFS, Depth-First Search) retornant true si es troba, o false en cas contrari. És una cerca optimitzada, finalitza en el moment que troba la primera coincidència.
+ * @author dmarin-itb
+ * @param node Element de tipus Node que actúa com a arrel (primer nivell) de l'arbre a recòrrer
+ * @param num Element de tipus Int que volem trobar com a valor dins els nodes de l'arbre
+ * @return Boolean amb valor true si es troba l'element i false en cas contrari
+ */
+fun cercaEnArbreNari(node:Node, num:Int):Boolean{
+    //var resultat:Boolean = false
+    if(node.valor==num) return true
+    else {
+        for (fill in node.fills){
+            if(cercaEnArbreNari(fill, num))
+                return true
+        }
+    }
+    return false
+}
+
+/**
+ * Funció recursiva per cercar l'element num a l'arbre recorrent en profunditat primer (DFS, Depth-First Search) retornant la quantitat de vegades que es troba l'element a l'arbre.
+ * @author dmarin-itb
+ * @param node Element de tipus Node que actúa com a arrel (primer nivell) de l'arbre a recòrrer
+ * @param num Element de tipus Int que volem trobar com a valor dins els nodes de l'arbre
+ * @return Int amb la quantitat de troballes de num a l'arbre
+ */
+fun qCopsEnArbreNari(node:Node, num:Int):Int{
+    var resultat:Int = 0
+
+    if(node.valor==num) resultat = 1
+
+    for (fill in node.fills){
+        resultat += qCopsEnArbreNari(fill, num)
+    }
+    return resultat
+}
+
+/**
+ * Funció recursiva per sumar els diferents elements que conformen l'arbre.
+ * @author dmarin-itb
+ * @param node Element de tipus Node que actúa com a arrel (primer nivell) de l'arbre a recòrrer
+ * @return Int amb la suma de tots els valors de tots els nodes de l'arbre
+ */
+fun sumarArbreNari(node:Node):Int{
+    var resultat:Int = 0
+
+    resultat = node.valor
+
+    for (fill in node.fills){
+        resultat += sumarArbreNari(fill)
+    }
+    return resultat
 }
